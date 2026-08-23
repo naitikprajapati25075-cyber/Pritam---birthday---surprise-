@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Pritam 🎂</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  min-height:100vh;
+  overflow:hidden;
+  font-family:Arial,sans-serif;
+  background:
+    radial-gradient(circle at 50% 35%,#352515 0%,#110d0a 45%,#030303 100%);
+  color:white;
+}
+
+/* CINEMATIC LIGHT */
+.room-light{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(
+    ellipse at 50% 30%,
+    rgba(255,190,80,.18),
+    transparent 55%
+  );
+  pointer-events:none;
+}
+
+/* SCENE */
+.scene{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  padding:20px;
+}
+
+/* TITLE */
+.title{
+  font-size:clamp(28px,7vw,58px);
+  letter-spacing:3px;
+  text-align:center;
+  margin-bottom:35px;
+  text-shadow:0 0 25px rgba(255,190,80,.7);
+}
+
+/* CAKE */
+.cake{
+  position:relative;
+  width:min(330px,80vw);
+  height:220px;
+  margin-top:35px;
+}
+
+/* CAKE BODY */
+.layer{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  height:85px;
+  border-radius:18px;
+  background:
+    linear-gradient(145deg,#111,#292929 45%,#050505);
+  border:2px solid #c79b45;
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.8),
+    inset 0 0 20px rgba(255,210,120,.12);
+}
+
+.layer.bottom{
+  bottom:0;
+}
+
+.layer.top{
+  bottom:65px;
+  width:88%;
+  height:75px;
+}
+
+/* GOLD DETAIL */
+.gold-line{
+  position:absolute;
+  left:7%;
+  right:7%;
+  height:4px;
+  background:linear-gradient(90deg,#8a6424,#ffe39a,#8a6424);
+  border-radius:5px;
+}
+
+.gold-line.one{
+  bottom:55px;
+}
+
+.gold-line.two{
+  bottom:130px;
+}
+
+/* CANDLES */
+.candles{
+  position:absolute;
+  bottom:138px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:24px;
+}
+
+.candle{
+  width:14px;
+  height:55px;
+  border-radius:4px;
+  background:linear-gradient(90deg,#d6a84c,#fff0a8,#b47b20);
+  position:relative;
+}
+
+/* FLAME */
+.flame{
+  position:absolute;
+  width:18px;
+  height:27px;
+  left:50%;
+  top:-27px;
+  transform:translateX(-50%);
+  background:radial-gradient(circle at 50% 70%,#fff 0 15%,#ffd34e 35%,#ff7b00 65%,transparent 70%);
+  border-radius:50% 50% 50% 50%;
+  filter:drop-shadow(0 0 10px #ffae00);
+  animation:flicker .15s infinite alternate;
+}
+
+@keyframes flicker{
+  from{transform:translateX(-50%) scale(1);}
+  to{transform:translateX(-50%) scale(.88,1.08);}
+}
+
+/* SMOKE */
+.smoke{
+  display:none;
+  position:absolute;
+  top:-55px;
+  left:50%;
+  width:20px;
+  height:70px;
+  transform:translateX(-50%);
+  background:linear-gradient(transparent,rgba(220,220,220,.35),transparent);
+  filter:blur(7px);
+  border-radius:50%;
+  animation:smokeUp 2.5s ease-out forwards;
+}
+
+@keyframes smokeUp{
+  0%{
+    opacity:.7;
+    transform:translate(-50%,0) scale(.7);
+  }
+  100%{
+    opacity:0;
+    transform:translate(-50%,-90px) scale(2);
+  }
+}
+
+/* BUTTON */
+.blow-btn{
+  margin-top:55px;
+  padding:15px 28px;
+  border:none;
+  border-radius:50px;
+  font-size:16px;
+  font-weight:bold;
+  color:#17110a;
+  background:linear-gradient(135deg,#ffe39a,#c99738);
+  box-shadow:0 0 25px rgba(255,200,80,.3);
+  cursor:pointer;
+}
+
+.blow-btn:active{
+  transform:scale(.95);
+}
+
+/* CONFETTI */
+.confetti{
+  position:fixed;
+  width:9px;
+  height:14px;
+  top:-20px;
+  animation:fall 3s linear forwards;
+  z-index:10;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(720deg);
+  }
+}
+
+/* FIREWORK */
+.firework{
+  position:fixed;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#ffd86a;
+  box-shadow:
+    0 0 15px #ffd86a,
+    0 0 35px #ff9d00;
+  animation:boom 1.4s ease-out forwards;
+  z-index:5;
+}
+
+@keyframes boom{
+  0%{
+    transform:scale(.2);
+    opacity:1;
+  }
+  100%{
+    transform:scale(15);
+    opacity:0;
+  }
+}
+
+/* FINAL */
+.final{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  background:rgba(0,0,0,.35);
+  z-index:20;
+}
+
+.final h1{
+  font-size:clamp(35px,9vw,80px);
+  color:#ffe49a;
+  text-shadow:0 0 30px #ffb300;
+}
+
+.final p{
+  margin-top:15px;
+  font-size:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="room-light"></div>
+
+<div class="scene">
+
+  <div class="title">
+    🎂 Birthday Cake for Pritam 🎂
+  </div>
+
+  <div class="cake">
+
+    <div class="layer bottom"></div>
+    <div class="layer top"></div>
+
+    <div class="gold-line one"></div>
+    <div class="gold-line two"></div>
+
+    <div class="candles">
+
+      <div class="candle">
+        <div class="flame"></div>
+        <div class="smoke"></div>
+      </div>
+
+      <div class="candle">
+        <div class="flame"></div>
+        <div class="smoke"></div>
+      </div>
+
+      <div class="candle">
+        <div class="flame"></div>
+        <div class="smoke"></div>
+      </div>
+
+      <div class="candle">
+        <div class="flame"></div>
+        <div class="smoke"></div>
+      </div>
+
+      <div class="candle">
+        <div class="flame"></div>
+        <div class="smoke"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <button class="blow-btn" onclick="blowCandles()">
+    💨 Blow the Candles
+  </button>
+
+</div>
+
+<div class="final" id="final">
+  <h1>HAPPY BIRTHDAY<br>PRITAM ❤️</h1>
+  <p>🎊🎆 Budhbak ka birthday hai! 🎆🎊</p>
+</div>
+
+<script>
+
+function blowCandles(){
+
+  /* Flames OFF */
+  document.querySelectorAll(".flame")
+    .forEach(flame => flame.style.display="none");
+
+  /* Smoke ON */
+  document.querySelectorAll(".smoke")
+    .forEach(smoke => smoke.style.display="block");
+
+  /* Hide button */
+  document.querySelector(".blow-btn").style.display="none";
+
+  /* Confetti */
+  for(let i=0;i<100;i++){
+    let c=document.createElement("div");
+    c.className="confetti";
+
+    c.style.left=Math.random()*100+"vw";
+    c.style.animationDelay=Math.random()*1.5+"s";
+
+    let colors=[
+      "#ffd166",
+      "#ff6b6b",
+      "#06d6a0",
+      "#4dabf7",
+      "#f72585"
+    ];
+
+    c.style.background=
+      colors[Math.floor(Math.random()*colors.length)];
+
+    document.body.appendChild(c);
+
+    setTimeout(()=>c.remove(),4500);
+  }
+
+  /* Fireworks */
+  for(let i=0;i<12;i++){
+
+    setTimeout(()=>{
+
+      let f=document.createElement("div");
+      f.className="firework";
+
+      f.style.left=(10+Math.random()*80)+"vw";
+      f.style.top=(10+Math.random()*45)+"vh";
+
+      document.body.appendChild(f);
+
+      setTimeout(()=>f.remove(),1500);
+
+    },i*180);
+  }
+
+  /* Final message */
+  setTimeout(()=>{
+    document.getElementById("final").style.display="flex";
+  },2200);
+
+}
+
+</script>
+
+</body>
+</html>
