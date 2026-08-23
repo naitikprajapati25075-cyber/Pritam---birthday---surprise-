@@ -631,9 +631,9 @@ body{
       inputmode="numeric"
     >
 
-    <button class="unlock-btn" onclick="unlockPritam()">
-      🔓 UNLOCK
-    </button>
+    <button class="unlock-btn" onclick="if(document.getElementById('passwordInput').value === '2408'){document.getElementById('accessScreen').style.display='none';}else{document.getElementById('passwordError').style.display='block';}">
+  🔓 UNLOCK
+</button>
 
     <div class="password-error" id="passwordError">
       ❌ WRONG PASSWORD
