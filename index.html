@@ -181,7 +181,22 @@ body{
   box-shadow:0 0 25px rgba(255,200,80,.3);
   cursor:pointer;
 }
+.next-btn{
+  margin-top:25px;
+  padding:14px 32px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#ffe39a,#b98227);
+  color:#17110a;
+  font-weight:800;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 0 25px rgba(255,200,80,.3);
+}
 
+.next-btn:active{
+  transform:scale(.94);
+}
 .blow-btn:active{
   transform:scale(.95);
 }
@@ -580,22 +595,7 @@ async function startBlowDetection() {
   document.getElementById("final").style.display="none";
   document.getElementById("pritamFiles").style.display="flex";
 }
-  .next-btn{
-  margin-top:25px;
-  padding:14px 32px;
-  border:none;
-  border-radius:30px;
-  background:linear-gradient(135deg,#ffe39a,#b98227);
-  color:#17110a;
-  font-weight:800;
-  font-size:16px;
-  cursor:pointer;
-  box-shadow:0 0 25px rgba(255,200,80,.3);
-}
 
-.next-btn:active{
-  transform:scale(.94);
-}
 </script>
 
 </body>
