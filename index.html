@@ -756,17 +756,42 @@ async function startBlowDetection() {
   } catch (error) {
     alert("Microphone permission allow karo 🎤");
   }
-}
-  function openPritamFiles(){
+function openPritamFiles(){
   document.getElementById("final").style.display="none";
   document.getElementById("pritamFiles").style.display="flex";
+}
+
+function unlockPritam(){
+
+  const password = document.getElementById("passwordInput").value;
+  const error = document.getElementById("passwordError");
+
+  if(password === "2408"){
+
+    error.style.display = "none";
+
+    document.querySelector(".access-screen h1").innerText =
+      "ACCESS GRANTED 🔓";
+
+    document.querySelector(".access-text").innerText =
+      "WELCOME TO PRITAM'S PRIVATE FILES";
+
+    document.querySelector(".password-box").style.display = "none";
+
+  }else{
+
+    error.style.display = "block";
+
   }
-  function openAccessScreen(){
+}
+
+function openAccessScreen(){
 
   document.getElementById("pritamFiles").style.display = "none";
   document.getElementById("accessScreen").style.display = "flex";
 
-  }
+}
+
 </script>
 </body>
 </html>
