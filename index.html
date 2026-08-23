@@ -409,6 +409,108 @@ body{
     transform:scale(1);
   }
 }
+  /* =========================
+   SCENE 4 - PASSWORD ACCESS
+========================= */
+
+.access-screen{
+  position:fixed;
+  inset:0;
+  z-index:40;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  padding:25px;
+
+  background:
+    radial-gradient(circle at center,
+      rgba(30,70,45,.18),
+      rgba(2,2,2,.98) 72%);
+
+  color:white;
+}
+
+.access-icon{
+  font-size:70px;
+  margin-bottom:20px;
+}
+
+.access-screen h1{
+  font-size:clamp(30px,8vw,52px);
+  letter-spacing:3px;
+  color:#8ff0b0;
+
+  text-shadow:
+    0 0 20px rgba(80,255,150,.35);
+}
+
+.access-text{
+  margin-top:12px;
+  color:#aaa;
+  font-size:14px;
+  letter-spacing:2px;
+}
+
+.password-box{
+  width:min(330px,85vw);
+  margin-top:30px;
+  padding:25px;
+
+  border:1px solid rgba(143,240,176,.25);
+  border-radius:20px;
+
+  background:rgba(15,15,15,.92);
+
+  box-shadow:
+    0 0 40px rgba(80,255,150,.08);
+}
+
+.password-box input{
+  width:100%;
+  box-sizing:border-box;
+
+  padding:14px;
+  border:none;
+  outline:none;
+
+  border-radius:12px;
+  text-align:center;
+
+  background:#222;
+  color:white;
+
+  font-size:18px;
+  letter-spacing:5px;
+}
+
+.unlock-btn{
+  margin-top:18px;
+  padding:13px 28px;
+
+  border:none;
+  border-radius:30px;
+
+  background:linear-gradient(135deg,#b8ffd0,#58c987);
+
+  color:#102018;
+  font-weight:800;
+  font-size:15px;
+
+  cursor:pointer;
+}
+
+.unlock-btn:active{
+  transform:scale(.94);
+}
+
+.password-error{
+  margin-top:12px;
+  color:#ff7777;
+  font-size:13px;
+  display:none;
+}
 </style>
 </head>
 
@@ -501,9 +603,42 @@ body{
       Case Subject: <strong>PRITAM</strong>
     </p>
 
-    <button onclick="alert('Evidence loading... 😂')">
-      🔓 OPEN FILE
+    <button onclick="openAccessScreen()">
+  🔓 OPEN FILE
+</button>
+
+  </div>
+
+</div>
+  <!-- SCENE 4 - PASSWORD ACCESS -->
+
+<div class="access-screen" id="accessScreen">
+
+  <div class="access-icon">🔐</div>
+
+  <h1>ACCESS REQUIRED</h1>
+
+  <div class="access-text">
+    PRIVATE FILE • PRITAM
+  </div>
+
+  <div class="password-box">
+
+    <input
+      type="password"
+      id="passwordInput"
+      maxlength="4"
+      placeholder="ENTER PASSWORD"
+      inputmode="numeric"
+    >
+
+    <button class="unlock-btn" onclick="unlockPritam()">
+      🔓 UNLOCK
     </button>
+
+    <div class="password-error" id="passwordError">
+      ❌ WRONG PASSWORD
+    </div>
 
   </div>
 
@@ -627,7 +762,42 @@ async function startBlowDetection() {
   document.getElementById("final").style.display="none";
   document.getElementById("pritamFiles").style.display="flex";
 }
+function unlockPritam(){
 
+  const password =
+    document.getElementById("passwordInput").value;
+
+  const error =
+    document.getElementById("passwordError");
+
+  if(password === "2408"){
+
+    error.style.display = "none";
+
+    document.querySelector(".access-screen h1").innerText =
+      "ACCESS GRANTED 🔓";
+
+    document.querySelector(".access-screen h1").style.color =
+      "#8ff0b0";
+
+    document.querySelector(".access-text").innerText =
+      "WELCOME TO PRITAM'S PRIVATE FILES";
+
+    document.querySelector(".password-box").style.display =
+      "none";
+
+  }else{
+
+    error.style.display = "block";
+function openAccessScreen(){
+
+  document.getElementById("pritamFiles").style.display="none";
+
+  document.getElementById("accessScreen").style.display="flex";
+
+}
+  }
+}
 </script>
 
 </body>
