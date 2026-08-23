@@ -757,63 +757,12 @@ async function startBlowDetection() {
     alert("Microphone permission allow karo 🎤");
   }
 }
-  function openPritamFiles(){
-  document.getElementById("final").style.display="none";
-  document.getElementById("pritamFiles").style.display="flex";
-}
-  
-</function openPritamFiles(){
-  document.getElementById("final").style.display="none";
-  document.getElementById("pritamFiles").style.display="flex";
-}
-
-function unlockPritam(){
-
-  const password =
-    document.getElementById("passwordInput").value;
-
-  const error =
-    document.getElementById("passwordError");
-
-  if(password === "2408"){
-
-    error.style.display = "none";
-
-    document.querySelector(".access-screen h1").innerText =
-      "ACCESS GRANTED 🔓";
-
-    document.querySelector(".access-screen h1").style.color =
-      "#8ff0b0";
-
-    document.querySelector(".access-text").innerText =
-      "WELCOME TO PRITAM'S PRIVATE FILES";
-
-    document.querySelector(".password-box").style.display =
-      "none";
-
-  }else{
-
-    error.style.display = "block";
-
-  }
-}
-
-function openAccessScreen(){
-
-  document.getElementById("pritamFiles").style.display="none";
-
-  document.getElementById("accessScreen").style.display="flex";
-
-}
   function openAccessScreen(){
 
-  const files = document.getElementById("pritamFiles");
-  const access = document.getElementById("accessScreen");
+  document.getElementById("pritamFiles").style.display = "none";
+  document.getElementById("accessScreen").style.display = "flex";
 
-  files.style.display = "none";
-  access.style.display = "flex";
-
-}
+  }
 </script>
 </body>
 </html>
