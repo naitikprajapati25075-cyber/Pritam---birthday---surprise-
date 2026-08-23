@@ -302,10 +302,9 @@ body{
 
   </div>
 
-  <button class="blow-btn" onclick="blowCandles()">
-    💨 Blow the Candles
-  </button>
-
+<button class="blow-btn" id="startMic" onclick="startBlowDetection()">
+  🎤 Blow the Candles
+</button>
 </div>
 
 <div class="final" id="final">
@@ -376,7 +375,58 @@ function blowCandles(){
   },2200);
 
 }
+async function startBlowDetection() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const analyser = audioContext.createAnalyser();
+    const microphone = audioContext.createMediaStreamSource(stream);
+
+    analyser.fftSize = 512;
+    microphone.connect(analyser);
+
+    const data = new Uint8Array(analyser.fftSize);
+
+    document.getElementById("startMic").innerText = "💨 Blow now...";
+
+    let strongSound = 0;
+
+    function detectBlow() {
+      analyser.getByteTimeDomainData(data);
+
+      let sum = 0;
+
+      for (let i = 0; i < data.length; i++) {
+        const value = (data[i] - 128) / 128;
+        sum += value * value;
+      }
+
+      const volume = Math.sqrt(sum / data.length);
+
+      if (volume > 0.12) {
+        strongSound++;
+      } else {
+        strongSound = 0;
+      }
+
+      if (strongSound >= 3) {
+        stream.getTracks().forEach(track => track.stop());
+        audioContext.close();
+
+        blowCandles();
+        return;
+      }
+
+      requestAnimationFrame(detectBlow);
+    }
+
+    detectBlow();
+
+  } catch (error) {
+    alert("Microphone permission allow karo 🎤");
+  }
+}
 </script>
 
 </body>
