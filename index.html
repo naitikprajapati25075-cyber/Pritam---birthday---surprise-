@@ -598,7 +598,6 @@ body{
     <div class="confidential">
       CONFIDENTIAL 🔒
     </div>
-
     <p>
       Case Subject: <strong>PRITAM</strong>
     </p>
@@ -804,6 +803,15 @@ function openAccessScreen(){
   document.getElementById("pritamFiles").style.display="none";
 
   document.getElementById("accessScreen").style.display="flex";
+
+}
+  function openAccessScreen(){
+
+  const files = document.getElementById("pritamFiles");
+  const access = document.getElementById("accessScreen");
+
+  files.style.display = "none";
+  access.style.display = "flex";
 
 }
 </script>
