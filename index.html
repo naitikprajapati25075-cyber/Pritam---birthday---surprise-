@@ -762,6 +762,12 @@ async function startBlowDetection() {
   document.getElementById("final").style.display="none";
   document.getElementById("pritamFiles").style.display="flex";
 }
+  
+</function openPritamFiles(){
+  document.getElementById("final").style.display="none";
+  document.getElementById("pritamFiles").style.display="flex";
+}
+
 function unlockPritam(){
 
   const password =
@@ -789,6 +795,10 @@ function unlockPritam(){
   }else{
 
     error.style.display = "block";
+
+  }
+}
+
 function openAccessScreen(){
 
   document.getElementById("pritamFiles").style.display="none";
@@ -796,9 +806,6 @@ function openAccessScreen(){
   document.getElementById("accessScreen").style.display="flex";
 
 }
-  }
-}
 </script>
-
 </body>
 </html>
