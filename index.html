@@ -510,6 +510,100 @@ body{
   color:#ff7777;
   font-size:13px;
   display:none;
+} 
+  /* =========================
+   SCENE 5 - PRITAM MEMORIES
+========================= */
+
+.pritam-memory{
+  position:fixed;
+  inset:0;
+  z-index:50;
+  display:none;
+  overflow-y:auto;
+  padding:30px 18px 50px;
+  background:
+    radial-gradient(circle at top,
+      rgba(70,45,20,.25),
+      #030303 65%);
+  color:white;
+  text-align:center;
+}
+
+.memory-title{
+  font-size:clamp(28px,8vw,48px);
+  color:#f1d58a;
+  letter-spacing:2px;
+  margin-bottom:10px;
+  text-shadow:0 0 20px rgba(241,213,138,.35);
+}
+
+.memory-subtitle{
+  color:#aaa;
+  font-size:14px;
+  margin-bottom:30px;
+}
+
+.memory-card{
+  width:min(430px,94vw);
+  margin:0 auto 28px;
+  padding:15px;
+  border:1px solid rgba(241,213,138,.25);
+  border-radius:20px;
+  background:rgba(15,15,15,.94);
+  box-shadow:0 0 30px rgba(241,213,138,.08);
+}
+
+.memory-card img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:70vh;
+  object-fit:contain;
+  border-radius:14px;
+}
+
+.memory-caption{
+  margin-top:14px;
+  color:#f1d58a;
+  font-size:15px;
+  line-height:1.5;
+}
+
+.voice-card{
+  width:min(430px,94vw);
+  margin:25px auto;
+  padding:22px 18px;
+  border:1px solid rgba(143,240,176,.25);
+  border-radius:20px;
+  background:rgba(12,20,15,.95);
+}
+
+.voice-card h2{
+  font-size:20px;
+  color:#8ff0b0;
+  margin-bottom:14px;
+}
+
+.voice-card audio{
+  width:100%;
+}
+
+.memory-final{
+  margin-top:35px;
+  padding:25px 15px;
+}
+
+.memory-final h1{
+  font-size:clamp(30px,8vw,55px);
+  color:#ffe49a;
+  text-shadow:0 0 25px #ffb300;
+}
+
+.memory-final p{
+  margin-top:14px;
+  color:#ddd;
+  line-height:1.6;
 }
 </style>
 </head>
@@ -639,6 +733,70 @@ body{
       ❌ WRONG PASSWORD
     </div>
 
+  </div>
+
+</div> 
+  <!-- SCENE 5 - PRITAM MEMORIES -->
+
+<div class="pritam-memory" id="pritamMemory">
+
+  <div class="memory-title">
+    📁 PRITAM FILES — EVIDENCE
+  </div>
+
+  <div class="memory-subtitle">
+    Some memories were recovered... 👀
+  </div>
+
+  <div class="memory-card">
+    <img src="screenshot1.jpg" alt="Pritam evidence 1">
+    <div class="memory-caption">
+      Evidence #01 — The case begins here... 👀
+    </div>
+  </div>
+
+  <div class="memory-card">
+    <img src="screenshot2.jpg" alt="Pritam evidence 2">
+    <div class="memory-caption">
+      Evidence #02 — Things are getting interesting 😂
+    </div>
+  </div>
+
+  <div class="voice-card">
+    <h2>🎙️ Voice Evidence #01</h2>
+    <audio controls preload="metadata">
+      <source src="1000040629_voice.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <div class="memory-card">
+    <img src="screenshot3.jpg" alt="Pritam evidence 3">
+    <div class="memory-caption">
+      Evidence #03 — Another important piece of evidence... 👀
+    </div>
+  </div>
+
+  <div class="memory-card">
+    <img src="screenshot4.jpg" alt="Pritam evidence 4">
+    <div class="memory-caption">
+      Evidence #04 — FINAL PROOF! 😂🔥
+    </div>
+  </div>
+
+  <div class="voice-card">
+    <h2>🎙️ Voice Evidence #02</h2>
+    <audio controls preload="metadata">
+      <source src="1000040628_voice.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <div class="memory-final">
+    <h1>❤️ HAPPY BIRTHDAY PRITAM ❤️</h1>
+
+    <p>
+      Case closed... 😂<br>
+      But the birthday celebration is just beginning! 🎂🎉
+    </p>
   </div>
 
 </div>
@@ -775,6 +933,10 @@ function unlockPritam(){
     document.querySelector(".access-text").innerText =
       "WELCOME TO PRITAM'S PRIVATE FILES";
     document.querySelector(".password-box").style.display = "none";
+   setTimeout(()=>{
+  document.getElementById("accessScreen").style.display="none";
+  document.getElementById("pritamMemory").style.display="block";
+},1200); 
   }else{
     error.style.display = "block";
   }
