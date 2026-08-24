@@ -1019,12 +1019,35 @@ body{
 <script>
 const introClip = document.getElementById("introClip");
 const introVideo = document.getElementById("introVideo");
+const birthdayMusic = document.getElementById("birthdayMusic");
+const suspenseMusic = document.getElementById("suspenseMusic");
+const emotionalMusic = document.getElementById("emotionalMusic");
 
+birthdayMusic.volume = 1;
+suspenseMusic.volume = 1;
+emotionalMusic.volume = 1;
+
+function stopAllMusic(){
+  birthdayMusic.pause();
+  suspenseMusic.pause();
+  emotionalMusic.pause();
+}
+
+function playBirthdayMusic(){
+  stopAllMusic();
+  birthdayMusic.currentTime = 0;
+  birthdayMusic.play().catch(err => {
+    console.log("Birthday music blocked:", err);
+  });
+}
 introClip.addEventListener("ended", function(){
 
   introVideo.style.display = "none";
 
   document.querySelector(".scene").style.display = "flex";
+
+  /* Birthday music start */
+  playBirthdayMusic();
 
 });
 function blowCandles(){
