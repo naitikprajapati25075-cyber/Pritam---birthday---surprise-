@@ -604,6 +604,141 @@ body{
   margin-top:14px;
   color:#ddd;
   line-height:1.6;
+} 
+  /* =========================
+   SCENE 6 - FINAL
+========================= */
+
+.scene6{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  padding:30px 22px;
+  overflow:hidden;
+
+  background:
+    radial-gradient(circle at 50% 35%,
+      rgba(75,48,25,.32),
+      #080604 55%,
+      #010101 100%);
+
+  color:white;
+}
+
+.scene6::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 25%,rgba(255,210,120,.08),transparent 25%),
+    radial-gradient(circle at 80% 70%,rgba(255,120,80,.06),transparent 25%);
+  pointer-events:none;
+}
+
+.scene6-content{
+  position:relative;
+  z-index:2;
+  width:min(650px,94vw);
+}
+
+.scene6-small{
+  color:#c9a866;
+  font-size:13px;
+  letter-spacing:4px;
+  margin-bottom:22px;
+  opacity:0;
+  animation:s6Fade 1s ease forwards;
+}
+
+.scene6-line{
+  font-size:clamp(24px,6vw,43px);
+  line-height:1.35;
+  color:#f5e2b0;
+  text-shadow:0 0 25px rgba(255,190,80,.25);
+  opacity:0;
+}
+
+.scene6-line.one{
+  animation:s6Fade 1.2s ease .8s forwards;
+}
+
+.scene6-line.two{
+  margin-top:20px;
+  color:#ddd;
+  font-size:clamp(18px,4.5vw,27px);
+  animation:s6Fade 1.2s ease 3s forwards;
+}
+
+.scene6-funny{
+  margin-top:28px;
+  padding:18px 20px;
+  border:1px solid rgba(241,213,138,.18);
+  border-radius:18px;
+  background:rgba(255,255,255,.035);
+  color:#eee;
+  font-size:clamp(16px,4vw,21px);
+  line-height:1.6;
+  opacity:0;
+  transform:translateY(20px);
+  animation:s6Up 1.2s ease 5.2s forwards;
+}
+
+.scene6-funny strong{
+  color:#f1d58a;
+}
+
+.scene6-wish{
+  margin-top:25px;
+  font-size:clamp(19px,5vw,30px);
+  line-height:1.5;
+  color:#fff;
+  opacity:0;
+  animation:s6Fade 1.2s ease 7.2s forwards;
+}
+
+.scene6-heart{
+  display:block;
+  margin-top:12px;
+  font-size:30px;
+}
+
+.scene6-end{
+  margin-top:30px;
+  font-size:clamp(34px,9vw,65px);
+  letter-spacing:8px;
+  color:#ffe49a;
+  text-shadow:0 0 30px #ffb300;
+  opacity:0;
+  animation:s6End 1.5s ease 9.5s forwards;
+}
+
+@keyframes s6Fade{
+  to{
+    opacity:1;
+  }
+}
+
+@keyframes s6Up{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes s6End{
+  0%{
+    opacity:0;
+    transform:scale(.85);
+  }
+  100%{
+    opacity:1;
+    transform:scale(1);
+  }
 }
 </style>
 </head>
@@ -796,7 +931,53 @@ body{
     <p>
       Case closed... 😂<br>
       But the birthday celebration is just beginning! 🎂🎉
-    </p>
+    </p> 
+    <button class="next-btn" onclick="openScene6()">
+  ONE LAST THING → ❤️
+</button>
+  </div>
+
+</div> 
+  <!-- SCENE 6 - FINAL -->
+
+<div class="scene6" id="scene6">
+
+  <div class="scene6-content">
+
+    <div class="scene6-small">
+      ONE LAST MESSAGE ❤️
+    </div>
+
+    <div class="scene6-line one">
+      Kuch log sirf dost nahi hote...
+    </div>
+
+    <div class="scene6-line two">
+      unke saath bitaya hua har moment<br>
+      dheere-dheere ek beautiful memory ban jaata hai. ❤️
+    </div>
+
+    <div class="scene6-funny">
+      Aur haan... 😂<br>
+      Tu mujhe <strong>CHIKNA</strong> bolta reh,<br>
+      main tujhe <strong>BUDHBAK</strong> bolta rahunga. 😭😂
+      <br><br>
+      <span>Deal kabhi cancel nahi hogi! 🤝😂</span>
+    </div>
+
+    <div class="scene6-wish">
+      Happy Birthday, Budhbak! 🎂❤️<br>
+      Hamesha khush reh, mast reh,<br>
+      aur apni life mein jo chahta hai<br>
+      woh sab tujhe mile. ✨
+
+      <span class="scene6-heart">❤️ 🎂 ❤️</span>
+    </div>
+
+    <div class="scene6-end">
+      THE END
+    </div>
+
   </div>
 
 </div>
@@ -947,7 +1128,14 @@ function openAccessScreen(){
   document.getElementById("pritamFiles").style.display = "none";
   document.getElementById("accessScreen").style.display = "flex";
 
-}
+} 
+  function openScene6(){
+
+  document.getElementById("pritamMemory").style.display = "none";
+
+  document.getElementById("scene6").style.display = "flex";
+
+  }
   </script>
 </body>
 </html>
